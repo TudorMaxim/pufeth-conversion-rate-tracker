@@ -22,3 +22,12 @@
     font-family: Arial;
     text-align: center;
 }
+
+h4 {
+    padding-left: 2rem;
+    font-weight: 400;
+}
+
+span {
+    padding-left: 6px;
+}

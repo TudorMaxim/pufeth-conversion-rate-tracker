@@ -1,12 +1,8 @@
 import React from "react";
 import { LineChart } from "@mui/x-charts";
-import { Button, CircularProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { useConversionRates, useTrackerSize } from "../hooks";
 import styles from './styles/tracker.module.css';
-
-const filterConversionRates = () => {
-
-}
 
 const Tracker = () => {
     const conversionRates = useConversionRates();
@@ -19,12 +15,11 @@ const Tracker = () => {
     }
     return (
         <>
-            <div className={styles.filters}>
-                <Button variant="outlined">Every minute</Button>
-                <Button variant="outlined">Every 15 minutes</Button>
-                <Button variant="outlined">Every 30 minutes</Button>
-                <Button variant="outlined">Every hour</Button>
-            </div>
+            <h4> 
+                Current Conversion Rate:
+                <span>{conversionRates[0].conversionRate}</span>
+            </h4>
+            <h4> Evolution over time:</h4>
             <LineChart
                 className={styles.chart}
                 xAxis={[
