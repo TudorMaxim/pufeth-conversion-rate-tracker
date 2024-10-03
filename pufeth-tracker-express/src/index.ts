@@ -45,3 +45,5 @@ cron.schedule('* * * * *', async () => {
 server.listen(port, () => {
     console.log(`[server]: Server is running.`);
 });
+
+export default server;
