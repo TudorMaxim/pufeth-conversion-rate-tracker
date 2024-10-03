@@ -35,7 +35,8 @@ const Tracker = () => {
                 ]}
                 series={[
                     {
-                        data: conversionRates.map((rate) => rate.conversionRate)
+                        data: conversionRates.map((rate) => rate.conversionRate),
+                        color: '#1976d2',
                     }
                 ]}
                 width={trackerSize.width}
