@@ -1,31 +1,49 @@
 import React from "react";
-import { PufETHData } from "../types";
-import socket, { socketEvents } from "../utils/socket";
+import { LineChart } from "@mui/x-charts";
+import { Button, CircularProgress } from "@mui/material";
+import { useConversionRates, useTrackerSize } from "../hooks";
+import styles from './styles/tracker.module.css';
 
-const useConversionRates = (): PufETHData[] => {
-    const [conversionRates, setConversionRates] = React.useState<Array<PufETHData>>([]);
-    
-    React.useEffect(() => {
-        socket.on(socketEvents.CONVERSION_RATE, (data: PufETHData) => {
-            setConversionRates((prev) => [...prev, data]);
-        });
-        socket.on(socketEvents.CONVERSION_RATE_BATCH, (data: PufETHData[]) => {
-            setConversionRates(data);
-        });
-        return () => {
-            socket.off(socketEvents.CONVERSION_RATE);
-            socket.off(socketEvents.CONVERSION_RATE_BATCH);
-        };
-    }, []);
+const filterConversionRates = () => {
 
-    return conversionRates;
-};
+}
 
 const Tracker = () => {
     const conversionRates = useConversionRates();
-    console.log(conversionRates);
+    const trackerSize = useTrackerSize();
+
+    if (conversionRates.length === 0) {
+        return (
+            <CircularProgress size={150} className={styles.loader} />
+        );
+    }
     return (
-        <div>TODO: implement tracker</div>
+        <>
+            <div className={styles.filters}>
+                <Button variant="outlined">Every minute</Button>
+                <Button variant="outlined">Every 15 minutes</Button>
+                <Button variant="outlined">Every 30 minutes</Button>
+                <Button variant="outlined">Every hour</Button>
+            </div>
+            <LineChart
+                className={styles.chart}
+                xAxis={[
+                    {
+                        scaleType: 'utc',
+                        data: conversionRates.map((rate) => new Date(rate.timestamp))
+                    }
+                ]}
+                series={[
+                    {
+                        data: conversionRates.map((rate) => rate.conversionRate)
+                    }
+                ]}
+                width={trackerSize.width}
+                height={trackerSize.height}
+                margin={{ left: 80, right: 80, top: 40, bottom: 80 }}
+            />
+        </>
+        
     );
 };
 

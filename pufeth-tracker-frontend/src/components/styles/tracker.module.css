@@ -1,0 +1,17 @@
+.chart {
+    margin: 1rem;
+}
+
+.loader {
+    position: fixed;
+    top: 45%;
+    left: 45%;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    float: right;
+    margin: 1rem 6rem;
+}

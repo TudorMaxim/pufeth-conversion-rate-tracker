@@ -1,0 +1,21 @@
+.header {
+    background: lightgray;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo {
+    width: 2rem;
+    height: 2rem;
+    padding: 0 1rem;
+}
+
+.text {
+    color: DodgerBlue;
+    font-family: Arial;
+    text-align: center;
+}
