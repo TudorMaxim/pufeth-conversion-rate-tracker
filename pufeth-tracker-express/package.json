@@ -1,35 +1,42 @@
 {
-  "name": "pufeth-tracker-express",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "build": "npx tsc",
-    "start": "node dist/index.js",
-    "dev": "nodemon src/index.ts",
-    "lint": "eslint \"./**/*.js\" --quiet",
-    "lint:full": "eslint \"./**/*.js\"",
-    "lint:fix": "eslint --fix './**/*.js'"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.21.0",
-    "web3": "^4.13.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.11.1",
-    "@types/express": "^5.0.0",
-    "@types/node": "^22.7.4",
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.30.0",
-    "globals": "^15.10.0",
-    "nodemon": "^3.1.7",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.6.2",
-    "typescript-eslint": "^8.8.0"
-  }
+    "name": "pufeth-tracker-express",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "build": "npx tsc",
+        "start": "node dist/index.js",
+        "dev": "nodemon src/index.ts",
+        "format": "npx prettier . --write",
+        "lint": "eslint \"./**/*.ts\" --quiet",
+        "lint:full": "eslint \"./**/*.ts\"",
+        "lint:fix": "eslint --fix './**/*.ts'"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "express": "^4.21.0",
+        "node-cron": "^3.0.3",
+        "redis": "^4.7.0",
+        "socket.io": "^4.8.0",
+        "web3": "^4.13.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.11.1",
+        "@types/express": "^5.0.0",
+        "@types/node": "^22.7.4",
+        "@types/node-cron": "^3.0.11",
+        "@types/redis": "^4.0.10",
+        "eslint": "^8.57.1",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-plugin-import": "^2.30.0",
+        "globals": "^15.10.0",
+        "nodemon": "^3.1.7",
+        "prettier": "3.3.3",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.6.2",
+        "typescript-eslint": "^8.8.0"
+    }
 }
