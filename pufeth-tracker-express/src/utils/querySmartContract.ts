@@ -1,4 +1,5 @@
 import { Web3 } from 'web3';
+import Big from 'big.js';
 import contractABI from './contractABI.json';
 import config from '../environment';
 
@@ -13,14 +14,15 @@ export type PufETHData = {
 };
 
 const querySmartContract = async (): Promise<PufETHData> => {
-    const totalAssets = (await contract.methods.totalAssets().call()) as bigint;
-    const totalSupply = (await contract.methods.totalSupply().call()) as bigint;
-    const conversionRate =
-        Number((totalAssets * 100000n) / totalSupply) / 100000;
+    const assets = (await contract.methods.totalAssets().call()) as string;
+    const supply = (await contract.methods.totalSupply().call()) as string;
+    const totalAssets = new Big(assets);
+    const totalSupply = new Big(supply);
+    const conversionRate = totalAssets.div(totalSupply);
     return {
-        conversionRate,
-        totalAssets: Number(totalAssets),
-        totalSupply: Number(totalSupply),
+        conversionRate: Number(conversionRate.toString()),
+        totalAssets: Number(assets),
+        totalSupply: Number(supply),
         timestamp: Date.now(),
     } as PufETHData;
 };
