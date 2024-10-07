@@ -37,6 +37,8 @@ cron.schedule('* * * * *', async () => {
         const data = await querySmartContract();
         storage.push(data);
         socket.emit(socketEvents.CONVERSION_RATE, data);
+        const time = new Date(data.timestamp).toLocaleString();
+        console.log(`[${time}] Current conversion rate is: ${data.conversionRate}`);
     } catch (err) {
         console.log('An error occured: ', err);
     }
