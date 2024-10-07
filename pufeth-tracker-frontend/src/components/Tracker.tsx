@@ -17,7 +17,7 @@ const Tracker = () => {
         <>
             <h4> 
                 Current Conversion Rate:
-                <span>{conversionRates[0].conversionRate}</span>
+                <span>{conversionRates[conversionRates.length - 1].conversionRate}</span>
             </h4>
             <h4> Evolution over time:</h4>
             <LineChart
